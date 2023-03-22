@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,75 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+
+    <button id="login" onclick='user.login()'>entrar</button>
+
+
+
+    <script>
+/*
+Esse é o código JavaScript dessa página.
+*/
+
+var name = 'joca da silva'
+var email = 'joca@silva.com'
+var birth = '2003-03-18'
+var cpf = '012.345.678-90'
+var address = 'Rua do siri molhado,22'
+
+
+// dados do usuário. forma moderna!
+var user = {
+    name: 'joca da silva',
+    email: 'joca@silva.com',
+    birth: '2003-03-18',
+    address: 'Rua do siri molhado,22',
+        login: function () {
+
+        var userEmail = prompt ('Digiti seu e-mail:')
+         // se o usuário não digitou nada...
+         if(userEmail =='' || userEmail==null) {
+            alert('ooooops! Você não informou um e-mail...')
+         }else { 
+            var userPass = prompt('Digite sua senha')
+
+            // encerra a função retornando false
+            return false
+         }
+
+         // digite a senha.
+         var userPass = prompt( 'Digite sua senha:')
+         if(userPass==" "|| userPass == null) {
+            alert('ooooops! Você não informou a senha...')
+
+            //Encerrar a função retornando false
+            return false
+
+
+
+
+         }
+
+         var userpass = prompt('digite sua senha')
+
+            prompt('digite seu nome e e-mail')
+        },
+        firtname: function(name) {
+            alert(name.split(' ')[0])
+      
+      
+        }
+
+
+
+}
+
+
+// Chama a função de loguin.
+
+//user.login()
+
+    </script>
 </body>
 </html>
