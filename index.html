@@ -1,81 +1,75 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Aplicativo</title>
 </head>
+
 <body>
 
-
-    <button id="login" onclick='user.login()'>entrar</button>
-
-
+    <button id="login" onclick="user.login()">Entrar</button>
 
     <script>
-/*
-Esse é o código JavaScript dessa página.
-*/
+        /*
+        Esse é o código JavaScript dessa página.
+        */
 
-var name = 'joca da silva'
-var email = 'joca@silva.com'
-var birth = '2003-03-18'
-var cpf = '012.345.678-90'
-var address = 'Rua do siri molhado,22'
+        // Dados do usuário. Forma moderna! Usando notação de objetos.
+        var user = {
 
+            // Atributos do objeto "user".
+            name: 'Joca da Silva',
+            email: 'joca@silva.com',
+            birth: '2003-03-18',
+            cpf: '012.345.678-90',
+            password: '12345',
+            address: 'Rua do Siri Molhado, 22',
+            photo:'https://randomuser.me/api/portraits/men/15.jpg',
 
-// dados do usuário. forma moderna!
-var user = {
-    name: 'joca da silva',
-    email: 'joca@silva.com',
-    birth: '2003-03-18',
-    address: 'Rua do siri molhado,22',
-        login: function () {
+            // Métodos do objeto "user".
+            login: function () {
 
-        var userEmail = prompt ('Digiti seu e-mail:')
-         // se o usuário não digitou nada...
-         if(userEmail =='' || userEmail==null) {
-            alert('ooooops! Você não informou um e-mail...')
-         }else { 
-            var userPass = prompt('Digite sua senha')
+                // Recebe o e-mail do prompt e armazena.
+                var userEmail = prompt('Digite seu e-mail:')
 
-            // encerra a função retornando false
-            return false
-         }
+                // Se o usuário não digitou nada...
+                if (userEmail == "" || userEmail == null) {
+                    alert("Oooops! Você não informou um e-mail...")
+                    // Encerra a função retornando false
+                    return false
+                } else if(userEmail != user.email) {
+                    alert('Oooops! E-mail não cadastrado...')
+                    return false
+                }
 
-         // digite a senha.
-         var userPass = prompt( 'Digite sua senha:')
-         if(userPass==" "|| userPass == null) {
-            alert('ooooops! Você não informou a senha...')
+                // Digite a senha.
+                var userPass = prompt('Digite sua senha:')
+                if (userPass == "" || userPass == null) {
+                    alert("Oooops! Você não informou a senha...")
 
-            //Encerrar a função retornando false
-            return false
+                    // Encerra a função retornando false
+                    return false
+                } else if (userPass != user.password) {
+                    alert('Oooops! Senha incorreta...')
+                    return false
+                }
 
+                document.write('<img src="' + user.photo + '"> Olá ' + user.name + '!')
+                localStorage.userdata = JSON.stringify({
+                    name: user.name,
+                    email: user.email
+                })
 
-
-
-         }
-
-         var userpass = prompt('digite sua senha')
-
-            prompt('digite seu nome e e-mail')
-        },
-        firtname: function(name) {
-            alert(name.split(' ')[0])
-      
-      
+            },
+            firstName: function () {
+                alert(this.name.split(' ')[0])
+            }
         }
 
-
-
-}
-
-
-// Chama a função de loguin.
-
-//user.login()
-
     </script>
+
 </body>
+
 </html>
