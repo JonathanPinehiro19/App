@@ -6,32 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <button id = "login" onclick="login()">Entrar</button>
-    <script>
-        
-        login = function () {                          
-            var userBirth = prompt("Coloque sua data de nascimento")              
-            
-            const partes = userBirth.split("/")             
-                console.log(partes)              
-            
-            var novaData = `${partes[2]}-${partes[1]}-${partes[0]}`                          
-                document.write(novaData)         
-        }
+
     
+    <!-- Campo de formulário que recebe a entrada do usuário. -->
+    <form onsubmit="trataData(event)">
+        Digite a data: <input type="text" name="databr" id="databr" placeholder="dd/mm/aaaa">
+        <button type="submit">Processar</button><br>
+        System date: <input type="text" name="datasis" id="datasis" readonly>
+    </form>
 
 
+    <script>
 
+        function trataData(ev) {
 
+            // Bloqueia a ação normal do formulário quando enviado.
+            ev.preventDefault()
 
+            // Recebe a data do usuário.
+            var dataUsuario = databr.value
 
+            // Desmonta a data para um array.
+            var partes = dataUsuario.split('/')
 
+            // Remonta a data, reformatando.
+            var dataSistema = `${partes[2]}-${partes[1]}-${partes[0]}`
 
+            // Escreve a data formatada no outro elemento.
+            document.getElementById('datasis').value = dataSistema
 
-
-
+        }
 
     </script>
+
 </body>
+
 </html>

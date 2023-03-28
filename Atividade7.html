@@ -4,22 +4,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <button id = "login" onclick="login()">Entrar</button>
+    <title>Questão07</title>
+    
+    <body>
+    
+    <!-- Campo de formulário que recebe a entrada do usuário. -->
+    <form onsubmit="trataData(event)">
+        Digite sua data de nascimento: <input type="text" name="databr" id="databr" placeholder="dd/mm/aaaa">
+        <button type="submit">Processar</button><br>
+        <span id="datasis"></span>
+    </form>
 
     <script>
-login = function () {                          
-            var userBirth = prompt("Coloque sua data de nascimento")  
 
+        function trataData(ev) {
 
+            // Bloqueia a ação normal do formulário quando enviado.
+            ev.preventDefault()
 
+            // Recebe a data do usuário.
+            var dataUsuario = document.getElementById('databr').value
+
+            // Desmonta a data para um array.
+            var partes = dataUsuario.split('/')
+
+            // Obtém a data atual.
+            // "agora" é uma INSTÂNCIA da classe "Date()".
+            var agora = new Date()
+
+            // Extrai as partes da data atual.
+            var dia = agora.getDate()
+            var mes = agora.getMonth() + 1
+            var ano = agora.getFullYear()
+
+            // Calcula a idade pelo ano.
+            var idade = ano - partes[2]
+
+            // Se o mês de nascimento for maior que o mês atual, subtrai 1 da idade.
+            if (partes[1] > mes || partes[1] == mes && partes[0] > dia) {
+                idade--
+            }
             
-}
 
+            // Escreve a idade no documento.
+            document.getElementById("datasis").innerHTML = `Você tem ${idade} anos.`
 
+        }
 
     </script>
+
 </body>
+
 </html>
